@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+
+    <script>
+        // Barangay data
+        const barangaysByCity = {
+            "Quezon City": [
+                "Barangay Baño", "Barangay Santo Cristo", "Barangay Tandang Sora", "Barangay Bagong Pag-asa",
+                "Barangay Batasan Hills", "Barangay Commonwealth", "Barangay Damayang Lagi", "Barangay Fairview",
+                "Barangay Golan", "Barangay Holy Spirit", "Barangay Kamatayan", "Barangay Krus na Ligas",
+                "Barangay Libis", "Barangay Laging Handa", "Barangay Paltok", "Barangay Payatas",
+                "Barangay San Antonio", "Barangay San Isidro", "Barangay San Jose", "Barangay Santo Domingo",
+                "Barangay Veterans Village", "Barangay San Roque", "Barangay Balong Bato", "Barangay Batasan",
+                "Barangay Capitol Site", "Barangay Culiat", "Barangay Novaliches Proper", "Barangay San Bartolome",
+                "Barangay San Francisco", "Barangay San Mateo", "Barangay San Nicolas", "Barangay Sangandaan",
+                "Barangay San Vicente", "Barangay Sikatuna Village", "Barangay Tandang Sora", "Barangay Holy Spirit",
+                "Barangay Old Balara", "Barangay Sienna", "Barangay Villa Maria"
+            ],
+            "Makati": [
+                "Barangay Bangkal", "Barangay Palanan", "Barangay Poblacion", "Barangay San Lorenzo",
+                "Barangay San Antonio", "Barangay Bel-Air", "Barangay Guadalupe Nuevo", "Barangay Guadalupe Viejo",
+                "Barangay Kasilawan", "Barangay Pembo", "Barangay Pitogo", "Barangay Rizal",
+                "Barangay Tejeros", "Barangay West Rembo", "Barangay East Rembo", "Barangay South Cembo",
+                "Barangay North Cembo", "Barangay Pembo", "Barangay South Cembo", "Barangay West Rembo",
+                "Barangay Sta. Cruz"
+            ],
+            "Pasig": [
+                "Barangay Kapitolyo", "Barangay Santolan", "Barangay Bagong Ilog", "Barangay Bambang",
+                "Barangay Caniogan", "Barangay San Miguel", "Barangay San Jose", "Barangay Ugong",
+                "Barangay Maybunga", "Barangay Santo Tomas", "Barangay Pinagbuhatan", "Barangay Manggahan",
+                "Barangay Palatiw", "Barangay San Antonio", "Barangay San Isidro", "Barangay Santo Tomas",
+                "Barangay Sumulong", "Barangay Sta. Lucia", "Barangay San Miguel", "Barangay Santolan",
+                "Barangay Malinao"
+            ],
+            "Taguig": [
+                "Barangay Fort Bonifacio", "Barangay Ususan", "Barangay Hagonoy", "Barangay Bagumbayan",
+                "Barangay Lower Bicutan", "Barangay Western Bicutan", "Barangay Central Bicutan", "Barangay Pinagsama",
+                "Barangay New Lower Bicutan", "Barangay Tuktukan", "Barangay Ligid-Tipas", "Barangay Upper Bicutan",
+                "Barangay Central Bicutan", "Barangay South Signal Village", "Barangay North Signal Village"
+            ],
+            "Valenzuela": [
+                "Barangay Dalandan", "Barangay Gen. T. De Leon", "Barangay Longos", "Barangay Parada",
+                "Barangay Punturin", "Barangay Tagalag", "Barangay Ugong", "Barangay Wawang Pulo",
+                "Barangay Malanday", "Barangay Karuhatan", "Barangay Maysan", "Barangay Poblacion",
+                "Barangay Canumay", "Barangay Taal", "Barangay Balong Bato", "Barangay Bisig",
+                "Barangay Marulas", "Barangay San Diego", "Barangay Tagalag", "Barangay Valenzuela",
+                "Barangay Poblacion", "Barangay Gen. T. De Leon", "Barangay Ugong"
+            ]
+        };
+
+        // Function to update Barangay dropdown
+        function updateBarangayDropdown() {
+            const citySelect = document.getElementById('city');
+            const barangaySelect = document.getElementById('barangay');
+            const selectedCity = citySelect.value;
+
+            // Clear existing options
+            barangaySelect.innerHTML = '<option value="" disabled selected>Select Barangay</option>';
+
+            // Populate Barangay options based on selected City
+            if (selectedCity in barangaysByCity) {
+                barangaysByCity[selectedCity].forEach(barangay => {
+                    const option = document.createElement('option');
+                    option.value = barangay;
+                    option.textContent = barangay;
+                    barangaySelect.appendChild(option);
+                });
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/uy.png" alt="Logo">
+                </a>
+            </div>
+            <h2 class="title">Registration Form</h2>
+        </div>
+        <form>
+            <label for="fullname">Fullname <span class="required">*</span></label>
+            <div class="row">
+                <div class="column">
+                    <input type="text" id="firstName" name="firstName" required>
+                    <small class="help-text">First Name</small>
+                </div>
+                <div class="column">
+                    <input type="text" id="middleName" name="middleName">
+                    <small class="help-text">Middle Name (Optional)</small>
+                </div>
+                <div class="column">
+                    <input type="text" id="lastName" name="lastName" required>
+                    <small class="help-text">Last Name</small>
+                </div>
+            </div>
+            <!-- Birthdate and Gender Row -->
+            <div class="row">
+                <div class="column">
+                    <label for="fullname">Birthdate <span class="required">*</span></label>
+                    <input type="date" id="birthdate" name="birthdate" required>
+                </div>
+                <div class="column">
+                    <label>Gender <span class="required">*</span></label>
+                    <div class="gender-options">
+                        <input type="radio" id="male" name="gender" value="male" required>
+                        <label for="male">Male</label>
+                        <input type="radio" id="female" name="gender" value="female" required>
+                        <label for="female">Female</label>
+                        <input type="radio" id="preferNotToSay" name="gender" value="preferNotToSay" required>
+                        <label for="preferNotToSay">Prefer not to</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <label for="addressDetails">Address Details <span class="required">*</span></label>
+                <input type="text" id="addressDetails" name="addressDetails" required>
+                <small class="help-text">Street/Subdivision/Village</small>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <select id="stateProvince" name="stateProvince" required>
+                        <option value="" disabled selected>Select Province</option>
+                        <option value="state1">Metro Manila</option>
+                        <option value="state2">Other Province</option>
+                    </select>
+                    <small class="help-text">State/Province</small>
+                </div>
+                <div class="column">
+                    <select id="city" name="city" required onchange="updateBarangayDropdown()">
+                        <option value="" disabled selected>Select City</option>
+                        <option value="Quezon City">Quezon City</option>
+                        <option value="Makati">Makati</option>
+                        <option value="Pasig">Pasig</option>
+                        <option value="Taguig">Taguig</option>
+                        <option value="Valenzuela">Valenzuela</option>
+                    </select>
+                    <small class="help-text">City</small>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <select id="district" name="district" required>
+                            <option value="" disabled selected>Select District</option>
+                            <option value="district1">District 1</option>
+                            <option value="district2">District 2</option>
+                            <option value="district1">District 3</option>
+                            <option value="district2">District 4</option>
+                            <option value="district1">District 5</option>
+                            <option value="district2">District 6</option>
+                            <option value="district1">District 7</option>
+                            <option value="district2">District 8</option>
+                            <option value="district1">District 9</option>
+                            <option value="district2">District 10</option>
+                        </select>
+                        <small class="help-text">District</small>
+                    </div>
+                    <div class="column">
+                        <select id="barangay" name="barangay" required>
+                            <option value="" disabled selected>Select Barangay</option>
+                            <!-- Barangay options will be populated here -->
+                        </select>
+                        <small class="help-text">Barangay</small>
+                    </div>
+                    <div class="column">
+                        <input type="text" id="postalCode" name="postalCode" required>
+                        <small class="help-text">Postal/Zip Code</small>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <label for="mobileNumber">Mobile Number <span class="required">*</span></label>
+                    <input type="text" id="mobileNumber" name="mobileNumber" required>
+                </div>
+                <div class="column">
+                    <label for="email">Email Address <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <label for="applyingPosition">Applying Position <span class="required">*</span></label>
+                    <select id="applyingPosition" name="applyingPosition" required>
+                        <option value="" disabled selected>Select Position</option>
+                        <option value="manager">Manager</option>
+                        <option value="supervisor">Supervisor</option>
+                        <option value="teamLeader">Team Leader</option>
+                        <option value="accountant">Accountant</option>
+                        <option value="hrOfficer">Human Resources Officer</option>
+                        <option value="salesExecutive">Sales Executive</option>
+                        <option value="customerServiceRep">Customer Service Representative</option>
+                        <option value="marketingSpecialist">Marketing Specialist</option>
+                        <option value="adminAssistant">Administrative Assistant</option>
+                        <option value="operationsManager">Operations Manager</option>
+                        <option value="itSpecialist">IT Specialist</option>
+                        <option value="projectManager">Project Manager</option>
+                        <option value="receptionist">Receptionist</option>
+                        <option value="businessAnalyst">Business Analyst</option>
+                        <option value="warehouseStaff">Warehouse Staff</option>
+                        <option value="graphicDesigner">Graphic Designer</option>
+                        <option value="dataAnalyst">Data Analyst</option>
+                        <option value="financialAdvisor">Financial Advisor</option>
+                        <option value="productionSupervisor">Production Supervisor</option>
+                        <option value="maintenanceTechnician">Maintenance Technician</option>
+                    </select>
+                </div>
+                
+                <div class="column">
+                    <label for="typeOfWork">Type of Work <span class="required">*</span></label>
+                    <select id="typeOfWork" name="typeOfWork" required>
+                        <option value="" disabled selected>Select Type of Work</option>
+                        <option value="fullTime">Full-time</option>
+                        <option value="partTime">Part-time</option>
+                        <option value="contractual">Contractual</option>
+                        <option value="freelance">Freelance</option>
+                        <option value="temporary">Temporary</option>
+                        <option value="internship">Internship</option>
+                        <option value="remote">Remote</option>
+                        <option value="shiftWork">Shift Work</option>
+                        <option value="seasonal">Seasonal</option>
+                        <option value="volunteerWork">Volunteer Work</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <label for="resume">Upload Resume <span class="required">*</span></label>
+                <input type="file" id="resume" name="resume" accept=".pdf, .doc, .docx" required>
+                <small class="help-text">.pdf and doc/docx only.</small>
+            </div>
+            <div class="row">
+                <button type="submit" class="submit-button">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
