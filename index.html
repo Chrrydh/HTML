@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows Calculator</title>
+    <script src="https://kit.fontawesome.com/8ad8ec53a6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="topBar">
+            <div class="title">
+                <i class="fas fa-calculator"></i>
+                <p>Calculator</p>
+            </div>
+            <div class="icons">
+                <i class="far fa-window-minimize" onclick="minimizeCalculator()"></i>
+                <i class="far fa-window-maximize" onclick="toggleEnlargeCalculator()"></i>
+                <i class="fas fa-times" onclick="exitCalculator()"></i>
+            </div>
+        </div>
+
+        <div class="secondaryBar">
+            <div class="menu" onclick="showAboutSection()">
+                <i class="fas fa-bars"></i>
+                <p>Standard</p>
+            </div>
+            <i class="fas fa-history clock-icon"></i>
+        </div>
+        
+
+        <div class="input-group">
+            <input type="text" id="calcDisplay" value="0" disabled>
+        </div>
+
+        <div class="modes">
+            <p>MC</p>
+            <p>MR</p>
+            <p>M+</p>
+            <p>M-</p>
+            <p>MS</p>
+            <p class="active">M<sup><i class="fas fa-chevron-down"></i></sup></p>
+        </div>
+
+        <div class="topOperations">
+            <button>%</button>
+            <button>CE</button>
+            <button>C</button>
+            <button><i class="fas fa-backspace"></i></button>
+        </div>
+
+        <div class="numbersAndBasicOperations">
+            <button>BIN</button>
+            <button>OCT</button>
+            <button>HEX</button>
+            <button class="operator">÷</button>
+
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button class="operator">×</button>
+
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button class="operator">−</button>
+
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button class="operator">+</button>
+
+            <button class="special">+/-</button>
+            <button>0</button>
+            <button>.</button>
+            <button class="equals">=</button>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div id="about-section" style="display: none;">
+        <div class="about-box">
+            <h2>About This Calculator</h2>
+            <p>
+                This calculator offers a clean interface, supports Binary, Octal, and Hexadecimal conversions.
+            </p>
+            <p>
+                Built using modern web technologies like HTML, CSS, and JavaScript, it ensures a smooth, responsive experience for students and professionals.
+            </p>
+            <button id="close-about" style="margin-top: 10px;">Close</button>
+        </div>
+    </div>
+
+    <script>
+        const calculatorContainer = document.querySelector('.container');
+        const aboutSection = document.getElementById('about-section');
+        const closeAboutButton = document.getElementById('close-about');
+
+        // Show About Section
+        function showAboutSection() {
+            aboutSection.style.display = 'flex'; // Show the about section
+        }
+
+        // Close About Section
+        closeAboutButton.addEventListener('click', () => {
+            aboutSection.style.display = 'none'; // Hide the about section
+        });
+
+        // Minimize Calculator
+        function minimizeCalculator() {
+            calculatorContainer.style.display = 'none';
+            setTimeout(() => {
+                alert("Calculator minimized. Refresh to bring it back.");
+            }, 100);
+        }
+
+        // Toggle Enlarge/Restore Calculator
+        let isEnlarged = false;
+        function toggleEnlargeCalculator() {
+            if (!isEnlarged) {
+                calculatorContainer.style.width = '600px'; // Enlarged width
+                calculatorContainer.style.height = 'auto'; // Adjust height as needed
+            } else {
+                calculatorContainer.style.width = '360px'; // Default width
+                calculatorContainer.style.height = 'auto';
+            }
+            isEnlarged = !isEnlarged;
+        }
+
+        // Exit Calculator
+        function exitCalculator() {
+            calculatorContainer.remove(); // Removes the calculator from the DOM
+            alert("Calculator closed.");
+        }
+    </script>
+</body>
+</html>
