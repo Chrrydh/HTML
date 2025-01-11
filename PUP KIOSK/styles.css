@@ -1,0 +1,225 @@
+/* Import Poppins Font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif; /* Apply Poppins globally */
+}
+
+body {
+    background-image: url(images/bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Header Section */
+.pupheader img {
+    width: 100%;
+    height: 700px;
+    object-fit: cover;
+}
+
+.subheader {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.subheader h1 {
+    font-size: 2rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 600; /* Slightly bold for heading */
+}
+
+.subheader p {
+    font-size: 1rem;
+    color: #ffffff;
+    font-weight: 300; /* Light font for paragraph */
+}
+
+/* Main Container */
+.container {
+    display: flex;
+    flex-wrap: nowrap; /* Ensure dropdown and map are side by side */
+    justify-content: space-between;
+    align-items: flex-start; /* Align items to the top */
+    max-width: 1200px;
+    margin: 20px auto;
+    gap: 20px; /* Spacing between dropdown and map */
+    padding: 0 10px; /* Add padding to prevent overflow on smaller screens */
+}
+
+/* Dropdown Menu */
+.dropdown {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    width: 250px; /* Fixed width */
+    flex-shrink: 0; /* Prevent shrinking */
+    text-align: left;
+    max-height: 500px; /* Limit height for scrollable lists */
+    overflow-y: auto; /* Scrollable dropdown if content exceeds height */
+}
+
+.dropdown h2 {
+    background-color: maroon;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 500; /* Medium weight for section titles */
+}
+
+/* Make the list scrollable */
+.dropdown ul {
+    list-style: none;
+    padding: 0;
+    max-height: 300px; /* Limit the height of the list */
+    overflow-y: auto; /* Add a vertical scrollbar */
+    scrollbar-width: thin; /* For modern browsers */
+    scrollbar-color: maroon white; /* Scrollbar colors for Firefox */
+}
+
+.dropdown ul::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar for Webkit browsers */
+}
+
+.dropdown ul::-webkit-scrollbar-thumb {
+    background-color: maroon; /* Color of the scrollbar thumb */
+    border-radius: 4px; /* Round edges */
+}
+
+.dropdown ul::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1); /* Color of the scrollbar track */
+}
+
+.dropdown ul li {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 14px;
+    font-weight: 400; /* Regular font for dropdown items */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.dropdown ul li:hover {
+    background-color: maroon;
+    color: white; /* Ensure text remains visible */
+}
+
+/* Map Section */
+.pupmap {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+    border: 5px solid black;
+    box-shadow: 0 2px 20px black;
+    max-width: 100%; /* Ensure the map is responsive */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Tooltip Styles */
+#display {
+    width: 250px; /* Compact tooltip width */
+    position: absolute; /* Position tooltip absolutely */
+    color: white; /* White font for readability */
+    background-color: rgba(0, 0, 0, 0.9); /* Dark semi-transparent background */
+    border-radius: 8px; /* Rounded edges for modern look */
+    transform: translate(-50%, -120%); /* Center tooltip above hovered area */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5); /* Subtle shadow for emphasis */
+    opacity: 0; /* Hidden by default */
+    pointer-events: none; /* Prevent interactions */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth animation */
+    z-index: 999; /* Ensure it appears on top */
+    padding: 10px; /* Spacing inside the box */
+    text-align: center; /* Center text and content */
+}
+
+/* Image inside the tooltip */
+#display img {
+    width: 100%; /* Fit image to tooltip width */
+    max-height: 120px; /* Ensure image doesn’t take up too much space */
+    object-fit: cover; /* Crop image proportionally if needed */
+    border-radius: 5px; /* Smooth edges for the image */
+    margin-bottom: 5px; /* Space between image and text */
+}
+
+/* Title in the tooltip */
+#display h3 {
+    margin: 5px 0;
+    font-size: 14px; /* Smaller title size */
+    font-weight: bold;
+    text-transform: uppercase; /* Make title stand out */
+}
+
+/* Description text in the tooltip */
+#display p {
+    font-size: 12px; /* Smaller font for the description */
+    line-height: 1.4; /* Slightly increased line height for readability */
+    margin: 0; /* Remove any default margin */
+}
+
+/* Tooltip visibility */
+#display.show {
+    opacity: 1; /* Make tooltip visible */
+}
+
+/* Fixed Tooltip (on click) */
+#display.fixed {
+    transform: translate(-50%, -50%) !important; /* Center fixed tooltip */
+    pointer-events: auto; /* Allow interactions for fixed tooltip */
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    font-size: 12px;
+    background-color: rgba(0, 0, 0, 0.8);
+    margin-top: 20px;
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stack dropdown and map vertically */
+        align-items: center;
+    }
+
+    .dropdown {
+        width: 100%; /* Full width for smaller screens */
+        margin-bottom: 20px;
+    }
+
+    .pupmap {
+        max-width: 100%; /* Make map responsive */
+    }
+}
+
+@media (max-width: 480px) {
+    .subheader h1 {
+        font-size: 1.5rem; /* Adjust heading size for small screens */
+    }
+
+    .subheader p {
+        font-size: 0.9rem; /* Adjust paragraph size for small screens */
+    }
+
+    #display {
+        width: 200px; /* Slightly smaller tooltip for mobile screens */
+    }
+}
